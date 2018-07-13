@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  01C                                                                  07/13/2018 21:54:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\01c.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 01c.asm SET(SMALL) DEBUG PRINT(.\Listings\01c.lst) OBJECT(.\Objects\01c
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;Exp 01a : Simple assembly langauge programming 8051 microcontroller
+                       2     ;A2 311036 Malhar Deshmukh
+                       3     ;6-Jul-2018
+                       4     
+0000                   5     org 0000h
+                       6             
+0000 753034            7             mov 30h,#34h
+0003 E530              8             mov a,30h
+0005 54F0              9             anl a,#0f0h
+0007 C4               10             swap a
+0008 F9               11             mov r1,a
+0009 E530             12             mov a,30h
+000B 540F             13             anl a,#0fh
+000D F8               14             mov r0,a
+000E 89F0             15             mov b,r1
+0010 A4               16             mul ab
+0011 FF               17             mov r7,a
+0012 75F00A           18             mov b,#10
+0015 84               19             div ab
+0016 C4               20             swap a
+0017 45F0             21             orl a,b
+0019 F531             22             mov 31h,a
+                      23             
+                      24     end
+                                             
+A51 MACRO ASSEMBLER  01C                                                                  07/13/2018 21:54:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
