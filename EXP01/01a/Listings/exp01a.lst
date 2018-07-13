@@ -1,0 +1,41 @@
+A51 MACRO ASSEMBLER  EXP01A                                                               07/13/2018 21:21:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\exp01a.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE exp01a.asm SET(SMALL) DEBUG PRINT(.\Listings\exp01a.lst) OBJECT(.\Objec
+                      ts\exp01a.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 D2D3              2             setb psw.3
+0002 7850              3             mov r0,#50h;destination
+0004 7930              4             mov r1,#30h;source
+0006 7B05              5             mov r3,#5h
+0008 755045            6             mov 50h,#45h
+                       7             
+000B                   8     MovData:
+000B E7                9             mov a,@r1
+000C F6               10             mov @r0,a
+000D 08               11             inc r0
+000E 09               12             inc r1
+000F DBFA             13             djnz r3,Movdata
+                      14     end
+                                                     
+A51 MACRO ASSEMBLER  EXP01A                                                               07/13/2018 21:21:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MOVDATA. . . . . .  C ADDR   000BH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
