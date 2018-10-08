@@ -1,0 +1,56 @@
+A51 MACRO ASSEMBLER  EXPT1C                                                               07/15/2018 12:38:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\expt1c.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE expt1c.asm SET(SMALL) DEBUG PRINT(.\Listings\expt1c.lst) OBJECT(.\Objec
+                      ts\expt1c.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPT-1:SIMPLE ALP 8051 MICROCONTROLLER
+                       2     ;PROBLEM STSTEMENT: A two digit BCD number to be stored in location 30h. Write ALP to unpac
+                             k this BCD number. Store the MSB in R1 and LSB in R2. Find Product of Both these and store result
+                       3     ;in packed BCD in 31h
+                       4     ;NAME: AADESH U PISE
+                       5     ;ROLL NO- 312041, BATCH: B2
+                       6     ;DATE OF PERFORMANCE: 11/07/18
+                       7     
+0000                   8                     ORG 0000H               ;
+0000 753046            9                     MOV 30h,#46H    ;STORE BCD NUMBER TO 30H LOCATION
+0003 E530             10                     MOV A,30h               ;A=46H, packed BCD from 30h location
+0005 540F             11                     ANL A,#0FH              ;MASK THE UPPER nibble (A=06)
+0007 F8               12                     MOV R0,A                ;LSB IN R2
+0008 E530             13                     MOV A,30H               ; GET ORIGNAL DATA
+000A 54F0             14                     ANL A,#0F0H     ;MASK LOWER nibble (A=40)
+000C 03               15                     RR A                    ;ROTATE RIGHT 
+000D 03               16                     RR A                    ;ROTATE RIGHT
+000E 03               17                     RR A                    ;ROTATE RIGHT
+000F 03               18                     RR A                    ;ROTATE RIGHT(A=04)
+0010 F9               19                     MOV R1,A        ;STORE MSB IN R1
+0011 89F0             20                     mov B,R1                ;MSB COPIED TO REGISTER B
+0013 E8               21                     mov A,R0                ;LSB COPIED TO REGISTER A
+0014 A4               22                     MUL AB                  ;MULTIPLICATION OF LSB AND MSB DONE
+0015 75F00A           23                     MOV B,#10               ;store 10 in B
+0018 84               24                     DIV AB                  ;divide A by B
+0019 C4               25                     SWAP A                  ;we get decimal number stored in a swap it
+001A 45F0             26                     ORL A,B                 ;logical or to get packed BCD
+001C F531             27                     MOV 31H,A               ;STORE DATA IN 31 LOCATION
+                      28                     END
+                                             
+                                             
+A51 MACRO ASSEMBLER  EXPT1C                                                               07/15/2018 12:38:34 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

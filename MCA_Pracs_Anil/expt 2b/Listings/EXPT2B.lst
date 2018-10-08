@@ -1,0 +1,58 @@
+A51 MACRO ASSEMBLER  EXPT2B                                                               07/14/2018 22:02:03 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXPT2B.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE EXPT2B.asm SET(SMALL) DEBUG PRINT(.\Listings\EXPT2B.lst) OBJECT(.\Objec
+                      ts\EXPT2B.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPT 2: Parallel port interfacing of LEDs
+                       2                     ;Problem statement: Flash alternate LEDs connected to port 2 by having 1 se
+                             c delay , generate delay using simple loops
+                       3                     ;NAME: AADESEH U PISE
+                       4                     ;BATCH: B2, ROLL NO :312041
+                       5                     ;DATE OF PERFORMANCE: 11/07/18
+0000                   6                     ORG 0000h                                       ;
+0000 75A055            7                     AGAIN: MOV P2,#55H              ;VALUE OF 55H AT PORT2 TO GLOW ALTERNATE LED
+0003 110C              8                     ACALL DELAY                             ;DELAY GENERATED
+0005 75A0AA            9                     MOV P2,#0AAH                    ;OTHER SET OF ALTERNATE LEDS GLOW
+0008 110C             10                     ACALL DELAY                             ;DELAY GENERATED
+000A 80F4             11                SJMP AGAIN                   ;JUMP TO AGAIN LOOP FOR LED BLINKING
+000C 780E             12                        DELAY: MOV R0,#14    ;DELAY USING TIMER
+000E 758901           13                               MOV TMOD,#01H ;MODE1 IS SELECTED 
+0011 758A00           14                          L1:  MOV TL0,#00   ;FOR 1 SEC DELAY INITILISE TL0 TO D8
+0014 758C00           15                                   MOV TH0,#00       ;FOR 1 SEC DELAY INITILISE TL0 TO FO IE IT 
+                             BECOMES D8F0 ,(THTL)
+0017 D28C             16                                       SETB TR0              ;START TIMER
+0019 308DFD           17                      L2:  JNB TF0,L2        ;WAIT TILL DELAY END
+001C C28C             18                               CLR TR0               ;STOP TMER
+001E C28D             19                                       CLR TF0               ;CLER
+0020 D8EF             20                                       DJNZ R0,L1    ;decrement ro till 65356 
+0022 22               21                                       RET                   ;
+                      22             END                      
+A51 MACRO ASSEMBLER  EXPT2B                                                               07/14/2018 22:02:03 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0000H   A   
+DELAY. . . . . . .  C ADDR   000CH   A   
+L1 . . . . . . . .  C ADDR   0011H   A   
+L2 . . . . . . . .  C ADDR   0019H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

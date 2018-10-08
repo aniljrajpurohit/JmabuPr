@@ -1,0 +1,51 @@
+A51 MACRO ASSEMBLER  EXPT2C                                                               07/21/2018 20:43:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXPT2C.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE EXPT2C.asm SET(SMALL) DEBUG PRINT(.\Listings\EXPT2C.lst) OBJECT(.\Objec
+                      ts\EXPT2C.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPT 2: Parallel port interfacing of LEDs
+                       2                     ;Problem statement: 2c write an alp to display BCD NUMBERS
+                       3                     ;NAME: AADESEH U PISE
+                       4                     ;BATCH: B2, ROLL NO :312041
+                       5                     ;DATE OF PERFORMANCE: 11/07/18
+0000                   6                     ORG 0000H               ;
+0000 7400              7                     MOV A,#00H              ;INITIALIZE A WITH 00H
+0002 7964              8                     MOV R1,#100D    ;INITIALIZE R1 WITH COUNT 99    
+0004 F5A0              9             L4: MOV P2,A            ;COPY A IN P2
+0006 04               10                 INC A                       ;INCREMENT A
+0007 D4               11                     DA A                    ;ADJUST THE NUMBER IN A TO DECIMAL VALUE 
+0008 110C             12                     ACALL DELAY             ;CALL DELAY 
+000A D9F8             13                     DJNZ R1,L4              ;DECREMENT R1 nd jump to L1
+000C 7A07             14             DELAY: MOV R2,#07       ;loop for 7 repetation
+000E 79FF             15             L1   : MOV R1,#0FFH     ;loop for 255 rep
+0010 78FF             16             L2   : MOV R0,#0FFH     ;loop for 255 rep
+0012 D8FE             17             L3   : DJNZ R0,L3       ;Dcrement jump till r0!=0
+0014 D9FA             18             DJNZ R1,L2              ;Dcrement jump till r1!=0         
+0016 DAF6             19                 DJNZ R2,L1          ; Dcrement jump till r2!=0
+0018 22               20                 RET
+                      21                     END
+A51 MACRO ASSEMBLER  EXPT2C                                                               07/21/2018 20:43:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   000CH   A   
+L1 . . . . . . . .  C ADDR   000EH   A   
+L2 . . . . . . . .  C ADDR   0010H   A   
+L3 . . . . . . . .  C ADDR   0012H   A   
+L4 . . . . . . . .  C ADDR   0004H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

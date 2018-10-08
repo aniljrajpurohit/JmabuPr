@@ -1,0 +1,72 @@
+A51 MACRO ASSEMBLER  EXPT3D                                                               09/16/2018 10:53:08 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXPT3D.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE EXPT3D.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXPT3D.lst) OBJECT(.\Objec
+                      ts\EXPT3D.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1                     ;EXPERIMENT 3:WRITE AN ALP TO INTERFACE DAC AND GENERATE SINE WAVEFORM
+                       2                     ;NAME:AAADESH PISE
+                       3                     ;ROLL N0:312041
+                       4                     ;BATCH:B2
+                       5                     ;DATE OF PERFORMANCE:1/8/2018
+                       6      
+0000                   7                             ORG 000H
+0000 E4                8                             CLR A                           ;clr accumulator
+0001 900100            9                             L1:MOV DPTR,#SINEWAVE   ;taking sine wave content in dptr
+0004 7848             10                             MOV R0,#72
+0006 C287             11                             CLR P0.7                        ;enable the dac wr line
+0008 93               12                             L2:MOVC A,@A+DPTR       ;load content in accumulator
+0009 F590             13                             MOV P1,A                        ;load data in port 1
+000B E4               14                             CLR A
+000C A3               15                             INC DPTR                        ;taking next content
+000D D8F9             16                             DJNZ R0,L2
+000F 80F0             17                             SJMP L1                         ;continuous waveform
+                      18      
+0100                  19                             ORG 0100H
+0100                  20                             SINEWAVE:
+0100 808A96A0         21                             DB 128,138,150,160,170,180,191,201,209,217,224,231,238,242,246,250,
+                             253,254
+0104 AAB4BFC9                
+0108 D1D9E0E7                
+010C EEF2F6FA                
+0110 FDFE                    
+0112 FFFEFDFA         22                             DB 255,254,253,250,246,242,238,231,224,217,209,201,191,181,170,160,
+                             150,115
+0116 F6F2EEE7                
+011A E0D9D1C9                
+011E BFB5AAA0                
+0122 9673                    
+0124 80756A60         23                             DB 128,117,106,96,84,74,64,55,46,38,31,25,18,13,9,5,2,1,0
+0128 544A4037                
+012C 2E261F19                
+0130 120D0905                
+0134 020100                  
+0137 00010205         24                             DB 0,1,2,5,9,13,18,25,31,38,46,55,64,74,84,96,106,117,126
+013B 090D1219                
+013F 1F262E37                
+0143 404A5460                
+0147 6A757E                  
+                      25                         END
+A51 MACRO ASSEMBLER  EXPT3D                                                               09/16/2018 10:53:08 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   0001H   A   
+L2 . . . . . . . .  C ADDR   0008H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SINEWAVE . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

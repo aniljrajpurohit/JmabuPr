@@ -1,0 +1,52 @@
+A51 MACRO ASSEMBLER  2D                                                                   09/16/2018 13:24:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\2D.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2D.ASM SET(SMALL) DEBUG PRINT(.\Listings\2D.lst) OBJECT(.\Objects\2D.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPT 2E: ALP TO COUNT THE EXTERNAL PULSES .ASSUMING THAT THE CLOCK PULSES ARE FED INTO PIN
+                               T1(P3.5),COUNTER 1 IN MODE2 
+                       2                     ;NAME: AADESEH U PISE
+                       3                     ;BATCH: B2, ROLL NO :312041
+                       4                     ;DATE OF PERFORMANCE: 11/07/18
+                       5                     
+0000                   6                     ORG 000H
+0000 758960            7                     MOV TMOD, #060H         ;SET TIMER 1 AS COUNTER
+0003 758B00            8                     MOV TL1,  #00H          ;INITIALISE TL1 TO 00
+0006 75B020            9                     MOV P3 ,  #020H         ;SET P3.5 AS AN INPUT
+0009 D28E             10         TOL:SETB TR1
+000B E58B             11              L1:MOV A,TL1                   ;MOVE CONTETS OF TL1 TO ACCUMALATOR OR STORE 00 TO 
+                             ACC
+000D F5A0             12                     MOV P2,A                        ;MOVE CONTETS OF  ACCUMALATOR TO PORT 2
+000F 308FF9           13                     JNB TF1,L1                      ; JUMP IF NOT TF1!=0(tf1 overflows)
+0012 C28E             14                     CLR TR1
+0014 C28F             15                     CLR TF1
+0016 80F1             16                     SJMP TOL             ;SHORT JUMP LOOP TO 'TOL'
+                      17                     END
+                                             
+A51 MACRO ASSEMBLER  2D                                                                   09/16/2018 13:24:16 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   000BH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TOL. . . . . . . .  C ADDR   0009H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

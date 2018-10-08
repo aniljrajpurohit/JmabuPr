@@ -1,0 +1,3 @@
+".\Objects\EXPT3D.obj" 
+TO ".\Objects\EXPT3D" 
+PRINT(".\Listings\EXPT3D.m51") RAMSIZE(256) 

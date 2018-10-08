@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  EXP1                                                                 07/11/2018 13:17:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\exp1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE exp1.asm SET(SMALL) DEBUG PRINT(.\Listings\exp1.lst) OBJECT(.\Objects\e
+                      xp1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPERIMENT NO1 
+                       2     ; PROGRAM STATEMENT, Write an ALP to move a block of N bytedata from source destinitiom. As
+                             ume that length of block is stored in R3 of bank 1, the source block stsrts from 
+                       3     ; memory location 0x30 and destination block begins from memory location ox50.
+                       4     ;Name: Aadesh U Pise, Roll no - 312041, Batch - B2
+                       5     ; date of performance - 4/7/18
+0000                   6             ORG 0000H
+0000 7830              7             MOV R0,#30H             ;R0 holding source address
+0002 7950              8             MOV R1,#50H             ;R1 holding destination address
+0004 7A0A              9             MOV R2,#10              ;no ofrf data transfer, r2 act as counter
+                      10             
+                      11     
+0006 E6               12             L1:MOV A,@R0    ;data fron source to a
+0007 F7               13             MOV @R1,a               ;data from a to destination
+0008 08               14             INC R0                  ;go to next source address 40
+0009 09               15             INC R1                  ;go to next dest address
+                      16      
+000A DAFA             17             DJNZ R2,L1              ;chech all the data transfer
+                      18      
+                      19             end
+A51 MACRO ASSEMBLER  EXP1                                                                 07/11/2018 13:17:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   0006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

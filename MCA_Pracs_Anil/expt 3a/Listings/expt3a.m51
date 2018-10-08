@@ -1,0 +1,51 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/07/2018  15:47:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\KIEL\C51\BIN\BL51.EXE .\Objects\expt3a.obj TO .\Objects\expt3a PRINT (.\Listings\expt3a.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\expt3a.obj (EXPT3A)
+
+
+LINK MAP OF MODULE:  .\Objects\expt3a (EXPT3A)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0011H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\expt3a (EXPT3A)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        EXPT3A
+  C:000CH         SYMBOL        DELAY
+  C:0000H         SYMBOL        L1
+  C:000EH         SYMBOL        L2
+  D:0090H         SYMBOL        P1
+  C:0000H         LINE#         9
+  C:0003H         LINE#         10
+  C:0005H         LINE#         11
+  C:0008H         LINE#         12
+  C:000AH         LINE#         13
+  C:000CH         LINE#         15
+  C:000EH         LINE#         16
+  C:0010H         LINE#         19
+  -------         ENDMOD        EXPT3A
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0011H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=17
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

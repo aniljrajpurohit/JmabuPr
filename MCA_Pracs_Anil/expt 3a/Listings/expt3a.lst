@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  EXPT3A                                                               10/07/2018 15:47:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\expt3a.obj
+ASSEMBLER INVOKED BY: E:\KIEL\C51\BIN\A51.EXE expt3a.asm SET(SMALL) DEBUG PRINT(.\Listings\expt3a.lst) OBJECT(.\Objects\
+                      expt3a.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPERIMENT_3A: WRITE AN ALP TO INTERFACE DAC0808 AND GENERATE SQUARE WAVE OF 1KHZ
+                       2     ;NAME: ANIL RAJPUROHIT
+                       3     ;ROLL N0: 312046
+                       4     ;BATCH: B2
+                       5     ;DATE OF PERFORMANCE: 1/8/2018
+                       6      
+0000                   7                             ORG 000H                
+                       8                                     
+0000 759000            9                     L1: MOV P1,#0           ; COPY ACC TO PORT 1
+0003 110C             10                             ACALL DELAY             ; CALL DELAY OF 1ms
+0005 7590FF           11                             MOV P1,#0FFH    ; STORE 255 TO THE PORT 1
+0008 110C             12                             ACALL DELAY             ; CALL DELAY OF 1ms
+000A 80F4             13                             SJMP L1                 ; LOOP CONTINOUSLY
+                      14      
+000C 79DF             15              DELAY: MOV R1,#223D    ; STORE VALUE 250 TO R1
+000E D9FE             16                     L2: DJNZ R1,L2      ; WAIT UNTIL R1 IS NOT EQUAL TO 0
+                      17     
+                      18     
+0010 22               19                             RET                             
+                      20                             END                             
+                                                      
+A51 MACRO ASSEMBLER  EXPT3A                                                               10/07/2018 15:47:46 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   000CH   A   
+L1 . . . . . . . .  C ADDR   0000H   A   
+L2 . . . . . . . .  C ADDR   000EH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

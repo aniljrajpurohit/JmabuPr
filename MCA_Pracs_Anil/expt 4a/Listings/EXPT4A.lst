@@ -1,0 +1,135 @@
+A51 MACRO ASSEMBLER  EXPT4A                                                               09/17/2018 18:41:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXPT4A.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE EXPT4A.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXPT4A.lst) OBJECT(.\Objec
+                      ts\EXPT4A.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXP NO.1(A):LCD INTERFACING IN 8 BIT MODE FOR DISPLAYING "WELCOME TO VIIT" SUCH THAT 'WELC
+                             OME' 
+                       2     ;ON FIRST LINE AND 'TO VIIT' ON SECOND LINE
+                       3     ;NAME - AAADESH PISE
+                       4     ;ROLL NO.312041
+                       5     ;BATCH -B2
+                       6     ;DATE OF PERFORMANCE - 25/7/18
+                       7     
+0000                   8     ORG 000H
+  00A0                 9     RS EQU P2.0
+  00A1                10     EN EQU P2.1
+  00A2                11     RW EQU P2.2
+  0080                12     LCD EQU P0
+                      13     
+0000 7438             14     MOV A,#38H    ;TO INITIALIZE LCD AS 8 BIT,5*7 RESOLUTION, 2LINE
+0002 1152             15     ACALL COMMAND ;CALL THE COMMAND SUBROUTINE
+                      16     
+0004 740E             17     MOV A,#0EH    ;TURN ON THE DISPLAY AND CURSOR
+0006 1152             18     ACALL COMMAND ;CALL THE COMMAND SUBROUTINE
+                      19     
+0008 7401             20     MOV A,#01H    ;CLEAR LCD DISPLAY,MEMORY AND CURSOR AT HOME POSITION
+000A 1152             21     ACALL COMMAND ;CALL THE COMMAND SUBROUTINE
+                      22     
+000C 7406             23     MOV A,#06H    ;TO SHIFT CURSOR TO LEFT FOR NEXT HARACTER AND ENABLE  DISABLE
+000E 1152             24     ACALL COMMAND ;CALL THE COMMAND SUBROUTINE
+                      25     
+0010 7480             26     MOV A,#80H    ;SELECT 1ST LINE AND POSITION TO DISPLAY MESSAGE
+0012 1152             27     ACALL COMMAND ;CALL THE COMMAND SUBROUTINE
+                      28     
+0014 7457             29     MOV A,#'W'    ; MOVE 'W' TO ACC
+0016 1161             30     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0018 7445             31     MOV A,#'E'        ; MOVE 'E' TO ACC
+001A 1161             32     ACALL DISPLAY ;DISPLAY SUBROUTINE
+001C 744C             33     MOV A,#'L'    ; MOVE 'L' TO ACC
+001E 1161             34     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0020 7443             35     MOV A,#'C'    ; MOVE 'C' TO ACC
+0022 1161             36     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0024 744F             37     MOV A,#'O'    ; MOVE 'O' TO ACC
+0026 1161             38     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0028 744D             39     MOV A,#'M'    ; MOVE 'M' TO ACC
+002A 1161             40     ACALL DISPLAY ;DISPLAY SUBROUTINE
+002C 7445             41     MOV A,#'E'    ; MOVE 'E' TO ACC
+002E 1161             42     ACALL DISPLAY ;DISPLAY SUBROUTINE
+                      43     
+0030 74C0             44     MOV A,#0C0H   ;SELECT 2ND LINE AND POSITION TO DISPLAY MESSAGE
+0032 1152             45     ACALL COMMAND ;DISPLAY SUBROUTINE
+0034 7454             46     MOV A,#'T'        ; MOVE 'T' TO ACC
+0036 1161             47     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0038 744F             48     MOV A,#'O'    ; MOVE 'O' TO ACC
+003A 1161             49     ACALL DISPLAY ;DISPLAY SUBROUTINE
+003C 7420             50     MOV A,#' '    ; MOVE '' TO ACC
+003E 1161             51     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0040 7456             52     MOV A,#'V'    ; MOVE 'V' TO ACC
+0042 1161             53     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0044 7449             54     MOV A,#'I'    ; MOVE 'I' TO ACC
+0046 1161             55     ACALL DISPLAY ;DISPLAY SUBROUTINE
+0048 7449             56     MOV A,#'I'    ; MOVE 'I' TO ACC
+A51 MACRO ASSEMBLER  EXPT4A                                                               09/17/2018 18:41:22 PAGE     2
+
+004A 1161             57     ACALL DISPLAY ;DISPLAY SUBROUTINE
+004C 7454             58     MOV A,#'T'    ; MOVE 'T' TO ACC
+004E 1161             59     ACALL DISPLAY ;DISPLAY SUBROUTINE
+                      60     
+0050 80FE             61     HERE:SJMP HERE; TO HOLD CHARACTERS 
+                      62     
+0052                  63     COMMAND:       ;SUBROUTINE TO COMMND INSTRUCTION TO LCD
+0052 1170             64     ACALL DELAY    ;DELAY CALL
+0054 F580             65     MOV P0,A       ;MOVE COMMAND TO LCD THROUGH PORT
+0056 C2A0             66     CLR RS         ;SELECTING COMMAND REGISTER FOR COMMAND
+0058 C2A2             67     CLR RW         ;SELECTING WRITING MODE
+005A D2A1             68     SETB EN        ;FOR WRITE GIVE HIGH TO LOW PULSE
+005C 1170             69     ACALL DELAY
+005E C2A1             70     CLR EN
+0060 22               71     RET
+                      72     
+0061                  73     DISPLAY:       ;SUBROUTINE TO DISPLAY INSTRUCTION TO LCD
+0061 1170             74     ACALL DELAY    ;DELAY CALL
+0063 F580             75     MOV P0,A       ;MOVE DATA TO LCD THROUGH PORT
+0065 D2A0             76     SETB RS        ;SELECTING DATA REGISTER FOR COMMAND
+0067 C2A2             77     CLR RW         ;SELECTING WRITING MODE
+0069 D2A1             78     SETB EN        ;FOR WRITE GIVE HIGH TO LOW PULDE
+006B 1170             79     ACALL DELAY
+006D C2A1             80     CLR EN
+006F 22               81     RET
+                      82     
+0070                  83     DELAY:
+0070 758901           84        MOV TMOD,#01H  ;TIMER 0,MODE 1
+0073 758CF8           85        MOV TH0,#0F8H  ;LOAD HIGH BYTE 
+0076 758ACC           86        MOV TL0,#0CCH  ;LOAD LOW BYTE
+0079 D28C             87        SETB TR0       ;START TIMER
+007B 308DFD           88     L3:JNB TF0,L3     ;MONITOR FLAG UNTILL IT ROLL OVER
+007E C28C             89        CLR TR0        ;STOP TIMER
+0080 C28D             90        CLR TF0        ;CLEAR FLAG
+0082 22               91        RET
+                      92        END
+A51 MACRO ASSEMBLER  EXPT4A                                                               09/17/2018 18:41:22 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COMMAND. . . . . .  C ADDR   0052H   A   
+DELAY. . . . . . .  C ADDR   0070H   A   
+DISPLAY. . . . . .  C ADDR   0061H   A   
+EN . . . . . . . .  B ADDR   00A0H.1 A   
+HERE . . . . . . .  C ADDR   0050H   A   
+L3 . . . . . . . .  C ADDR   007BH   A   
+LCD. . . . . . . .  D ADDR   0080H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RS . . . . . . . .  B ADDR   00A0H.0 A   
+RW . . . . . . . .  B ADDR   00A0H.2 A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

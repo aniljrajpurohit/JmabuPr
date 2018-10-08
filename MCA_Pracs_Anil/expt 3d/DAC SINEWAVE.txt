@@ -1,0 +1,22 @@
+;EXPERIMENT 3:WRITE AN ALP TO INTERFACE DAC AND GENERATE SINE WAVEFORM
+ ;NAME:AAADESH PISE
+ ;ROLL N0:312041
+ ;BATCH:B1
+ ;DATE OF PERFORMANCE:1/8/2018
+ 
+    ORG 000H
+    CLR A            ;clr accumulator
+ L1:MOV DPTR,#SINE   ;taking sine wave content in dptr
+    MOV R0,#24
+    CLR P0.7         ;enable the dac wr line
+ L2:MOVC A,@A+DPTR   ;load content in accumulator
+    MOV P1,A          ;load data in port 1
+    CLR A
+    INC DPTR         ;taking next content
+    DJNZ R0,L2
+    SJMP L1          ;continuous waveform
+ 
+ ORG 0100H
+ SINE:
+ db 127,160,191,217,237,250,255,250,237,217,191,160,127,94,63,37,17,4,0,4,17,37,63,94,127
+ end

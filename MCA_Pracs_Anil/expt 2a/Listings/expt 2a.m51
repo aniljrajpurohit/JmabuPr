@@ -1,0 +1,57 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    07/14/2018  20:00:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\EXPT_2A.obj TO .\Objects\expt 2a PRINT (.\Listings\expt 2a.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\EXPT_2A.obj (EXPT_2A)
+
+
+LINK MAP OF MODULE:  .\Objects\expt 2a (EXPT_2A)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0019H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\expt 2a (EXPT_2A)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        EXPT_2A
+  C:0000H         SYMBOL        AGAIN
+  C:000CH         SYMBOL        DELAY
+  C:000EH         SYMBOL        L1
+  C:0010H         SYMBOL        L2
+  C:0012H         SYMBOL        L3
+  D:00A0H         SYMBOL        P2
+  C:0000H         LINE#         7
+  C:0003H         LINE#         8
+  C:0005H         LINE#         9
+  C:0008H         LINE#         10
+  C:000AH         LINE#         11
+  C:000CH         LINE#         12
+  C:000EH         LINE#         13
+  C:0010H         LINE#         14
+  C:0012H         LINE#         15
+  C:0014H         LINE#         16
+  C:0016H         LINE#         17
+  C:0018H         LINE#         18
+  -------         ENDMOD        EXPT_2A
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0019H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=25
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

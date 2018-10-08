@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  EXPT_1B                                                              07/11/2018 13:57:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\expt 1b.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE expt 1b.asm SET(SMALL) DEBUG PRINT(.\Listings\expt 1b.lst) OBJECT(.\Obj
+                      ects\expt 1b.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPT 2
+                       2     ;Write a program to move a block of N byte from source to destination. Assume that the leng
+                             th of a block is stored in R3 of blank 1, the source start memory location 0x30 and destina
+                             tion block beginfrom memory location 0x50 non overlaped block transfer.
+                       3     ;Name: Aadesh pise, roll no: 312041, batch - B2
+                       4     ; D.O.P - 4/7/18
+                       5     
+0000                   6     org 0000h
+0000 7840              7     MOV R0, #40H    ;R0 acts as source for data block
+0002 903000            8     MOV DPTR,#3000H ;DPTR acts as destination for data block
+                       9     
+0005 7A05             10     MOV R2,#05H             ;Length of data block is stored in R3
+                      11     
+0007                  12     L1:                     ;Loop for transfering data one by one
+0007 E6               13         MOV a,@R0   ;moving byte from source to R0 to accumalator
+0008 F0               14             MOVX @DPTR,a;moving byte from accumalator R0 to destination
+0009 08               15             INC R0          ;increment source R0 pointer
+000A A3               16         INC DPTR    ;increment destination DPTR Pointer
+000B DAFA             17         DJNZ R2,L1  ;decrement the counter R3 and repeat the loop
+                      18     
+                      19     END
+A51 MACRO ASSEMBLER  EXPT_1B                                                              07/11/2018 13:57:11 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   0007H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

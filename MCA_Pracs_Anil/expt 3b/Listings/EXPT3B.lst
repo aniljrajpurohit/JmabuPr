@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  EXPT3B                                                               10/07/2018 16:42:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXPT3B.obj
+ASSEMBLER INVOKED BY: E:\KIEL\C51\BIN\A51.EXE EXPT3B.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXPT3B.lst) OBJECT(.\Objects\
+                      EXPT3B.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPERIMENT_3B: WRITE AN ALP TO INTERFACE DAC AND GENERATE TRIANGULAR WAVEFORM USING 89S52
+                       2     ;NAME: ANIL RAJPUROHIT
+                       3     ;ROLL N0: 312046
+                       4     ;BATCH: B2
+                       5     ;DATE OF PERFORMANCE:1/8/2018
+                       6      
+0000                   7                             ORG 0000H
+                       8                                     
+0000 E4                9                             CLR A                   ;INITIALIZING SATART POSITION i.e 00H
+0001 F590             10             BACK:   MOV P1,A                ;LOAD DATA OF A INTO PORT 1
+0003 04               11                             INC A                   ;INCREMENT STEP OF A
+0004 B4FFFA           12                             CJNE A,#0FFH,BACK       ;COMPARE TO HIGHEST PEAK OF WAVE
+0007 74FF             13                             MOV A,#0FFH             ;INITIALIZING HIGHEST VALUE OF WAVE
+0009 F590             14             HERE:   MOV P1,A                ;LOAD DATA OF A INTO PORT 1
+000B 14               15                             DEC A                   ;DECREASING STEP OF WAVE
+000C B400FA           16                             CJNE A,#00,HERE         ;COMPARE TO LOWEST PEAK OF WAVE
+000F 80F0             17                             SJMP BACK               ;CONTINUOUS WAVEFORM
+                      18                             
+                      19                             END
+A51 MACRO ASSEMBLER  EXPT3B                                                               10/07/2018 16:42:44 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0001H   A   
+HERE . . . . . . .  C ADDR   0009H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

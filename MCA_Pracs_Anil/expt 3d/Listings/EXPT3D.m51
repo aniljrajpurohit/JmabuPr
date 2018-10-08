@@ -1,0 +1,54 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/16/2018  10:53:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\EXPT3D.obj TO .\Objects\EXPT3D PRINT (.\Listings\EXPT3D.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\EXPT3D.obj (EXPT3D)
+
+
+LINK MAP OF MODULE:  .\Objects\EXPT3D (EXPT3D)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     014AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\EXPT3D (EXPT3D)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        EXPT3D
+  C:0001H         SYMBOL        L1
+  C:0008H         SYMBOL        L2
+  D:0080H         SYMBOL        P0
+  D:0090H         SYMBOL        P1
+  C:0100H         SYMBOL        SINEWAVE
+  C:0000H         LINE#         8
+  C:0001H         LINE#         9
+  C:0004H         LINE#         10
+  C:0006H         LINE#         11
+  C:0008H         LINE#         12
+  C:0009H         LINE#         13
+  C:000BH         LINE#         14
+  C:000CH         LINE#         15
+  C:000DH         LINE#         16
+  C:000FH         LINE#         17
+  -------         ENDMOD        EXPT3D
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 005BH BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=330
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

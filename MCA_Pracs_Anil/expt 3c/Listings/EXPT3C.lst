@@ -1,0 +1,40 @@
+A51 MACRO ASSEMBLER  EXPT3C                                                               09/16/2018 10:10:01 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\EXPT3C.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE EXPT3C.ASM SET(SMALL) DEBUG PRINT(.\Listings\EXPT3C.lst) OBJECT(.\Objec
+                      ts\EXPT3C.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1                             ;EXPERIMENT 3:WRITE AN ALP TO INTERFACE DAC0808 AND GENERATE SAWTOO
+                             TH WAVEFORM
+                       2                             ;NAME:AADESH PISE
+                       3                             ;ROLL N0:312041
+                       4                             ;BATCH:B2
+                       5                             ;DATE OF PERFORMANCE:1/8/2018
+                       6      
+0000                   7                             ORG 000H
+0000 7400              8                             MOV A,#00H              ;INITIALIZING INTITIAL POSITION OF SAWTOOTH
+                              WAVE
+0002 F590              9                             L1:MOV P1,A     ;LOAD DATA OF A INTO PORT 0
+0004 04               10                             INC A                   ;INCREMENT STEP OF WAVE
+0005 80FB             11                             SJMP L1                 ;CONTINUOUS WAVEFORM
+                      12                             END
+A51 MACRO ASSEMBLER  EXPT3C                                                               09/16/2018 10:10:01 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+L1 . . . . . . . .  C ADDR   0002H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

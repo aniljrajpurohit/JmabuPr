@@ -1,0 +1,4 @@
+11.0592/12 = 921.6 KHz
+
+Machine cycle = 1/921.6 KHz = 1.085us [us=microsecond]
+

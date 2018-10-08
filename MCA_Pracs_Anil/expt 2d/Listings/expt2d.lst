@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  EXPT2D                                                               09/16/2018 11:35:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\expt2d.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE expt2d.asm SET(SMALL) DEBUG PRINT(.\Listings\expt2d.lst) OBJECT(.\Objec
+                      ts\expt2d.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;EXPT 2D: ALP FOR HEXADECIMAL NUMBER DISPLAY ON LEDS CONNECTED TO PORT 2
+                       2                     ;Problem statement: 2B Flash alternate LEDs connected to port 2 by having 1
+                              sec delay , generate delay using TIMER
+                       3                     ;NAME: AADESEH U PISE
+                       4                     ;BATCH: B2, ROLL NO :312041
+                       5                     ;DATE OF PERFORMANCE: 11/07/18
+0000                   6                     ORG 000H
+0000 75A000            7                             MOV P2,#00H             ;MOVE 00H TO PORT2
+0003                   8                             HERE:               ;
+0003 05A0              9                             INC P2                          ;INCREMENT VALUE TO PORT 2
+0005 1109             10                             ACALL DELAY                     ;DELAY SUBROUTINE
+0007 80FA             11                             SJMP HERE 
+0009 780E             12                        DELAY: MOV R0,#14    ;DELAY USING TIMER
+000B 758901           13                               MOV TMOD,#01H ; TIMER 0 ,MODE1 IS SELECTED 
+000E 758A00           14                          L1:  MOV TL0,#00   ;INITIALISE TL0 TO 00H
+0011 758C00           15                                   MOV TH0,#00       ;INITIALISE TH0 TO 00H
+0014 D28C             16                                       SETB TR0              ;START TIMER
+0016 308DFD           17                      L2:  JNB TF0,L2        ;WAIT TILL DELAY END
+0019 C28C             18                               CLR TR0               ;STOP TMER
+001B C28D             19                                       CLR TF0               ;CLEAR TF0 FLAG
+001D D8EF             20                                       DJNZ R0,L1    ;RUN LOOP `14 TIMES
+001F 22               21                                       RET                   ;
+                      22             END                      
+A51 MACRO ASSEMBLER  EXPT2D                                                               09/16/2018 11:35:44 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0009H   A   
+HERE . . . . . . .  C ADDR   0003H   A   
+L1 . . . . . . . .  C ADDR   000EH   A   
+L2 . . . . . . . .  C ADDR   0016H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
